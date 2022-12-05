@@ -1,5 +1,3 @@
-const puzzle = await Deno.readTextFile("./puzzle.txt");
+const puzzleInput = await Deno.readTextFile("./puzzle.txt");
 
-const puzzleInput = puzzle;
-
-export puzzleInput;
+export { puzzleInput };
