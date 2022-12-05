@@ -1,11 +1,12 @@
 import { puzzleInput } from "./puzzleinput.ts";
-function aggregateElfCalories(elf) {
+
+function aggregateElfCalories(elf: string): number {
   // Split the string of calorie values by newlines to get
   // an array of individual calorie values
   const calorieValues = elf.split("\n");
 
   // Use Array.reduce to sum up all the calorie values
-  const totalCalories = calorieValues.reduce((sum, calories) => {
+  const totalCalories = calorieValues.reduce((sum: number, calories: string) => {
     // Convert the string value to a number and add it to the sum
     return sum + Number(calories);
   }, 0);
@@ -24,14 +25,14 @@ const elfCalories = input
 
   // 2b.) Aggregate the calories for each elf into an array
   // of single numbers using Array.map
-  .map((elf) => {
+  .map((elf: string) => {
     // You need to implement this function to return the
     // total number of calories for the given elf
     return aggregateElfCalories(elf);
   })
 
   // 2c.) Sort the resulting array from highest to lowest calories
-  .sort((a, b) => b - a);
+  .sort((a: number, b: number) => b - a);
 
 // Get the three highest calorie values
 const highestCalories = elfCalories.slice(0, 3);
@@ -39,10 +40,10 @@ const highestCalories = elfCalories.slice(0, 3);
 // Find the elves with the highest calorie values
 const highestCalorieElves = input
   .split("\n\n")
-  .filter((elf) => highestCalories.includes(aggregateElfCalories(elf)));
+  .filter((elf: string) => highestCalories.includes(aggregateElfCalories(elf)));
 
 // Calculate the total calories for the highest calorie elves
-const totalCalories = highestCalorieElves.reduce((sum, elf) => {
+const totalCalories = highestCalorieElves.reduce((sum: number, elf: string) => {
   return sum + aggregateElfCalories(elf);
 }, 0);
 
